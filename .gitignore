@@ -1,0 +1,13 @@
+# IDEs
+.vs
+.vscode
+.idea
+
+# Builds
+obj
+bin
+wwwroot
+Migrations
+
+# Configs
+*.user

@@ -10,7 +10,7 @@ namespace Logic.InsuranceClientLogic
     public class InsuranceClientLogic
     {
         // Injecting a DAL dependency into Logic class
-        private readonly IInsuranceClient _insuranceClient = new DAL.Functions.InsuranceClientImpl();
+        private readonly IInsuranceClient _insuranceClient = new DAL.Functions.InsuranceClientFunctions();
 
         public async Task<Boolean> CreateNewInsuranceClient(string fullName, string email)
         {

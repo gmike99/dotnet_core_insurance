@@ -15,6 +15,6 @@ namespace DAL.Interfaces
             int insuranceClientId
         );
 
-        Task<InsuranceContract> GetAllInsuranceContracts();
+        Task<List<InsuranceContract>> GetAllInsuranceContracts();
     }
 }

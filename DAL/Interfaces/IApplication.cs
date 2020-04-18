@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IAplication
+    public interface IApplication
     {
         Task<Application> AddApplication(
             int insuranceClientId,
             string appliedDate,
             string applicationStatus,
-            string riskDecision,
             int insuranceFormID
         );
 

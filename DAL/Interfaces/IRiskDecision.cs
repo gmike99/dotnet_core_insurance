@@ -17,6 +17,6 @@ namespace DAL.Interfaces
             int applicatinoId
         );
 
-        Task<RiskDecision> GetAllRiskDecisions();
+        Task<List<RiskDecision>> GetAllRiskDecisions();
     }
 }

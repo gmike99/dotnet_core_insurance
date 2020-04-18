@@ -15,6 +15,6 @@ namespace DAL.Interfaces
             string specialty
         );
 
-        Task<InsuranceCompany> GetAllInsuranceCompanies();
+        Task<List<InsuranceCompany>> GetAllInsuranceCompanies();
     }
 }

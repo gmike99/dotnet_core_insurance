@@ -13,10 +13,10 @@ namespace DAL.Interfaces
             string destinationState,
             string plannedArrivalDate,
             string plannedDepartureDate,
-            string daysInCountry,
+            int daysInCountry,
             string insurancePlan
         );
 
-        Task<InsuranceForm> GetAllInsuranceForms();
+        Task<List<InsuranceForm>> GetAllInsuranceForms();
     }
 }

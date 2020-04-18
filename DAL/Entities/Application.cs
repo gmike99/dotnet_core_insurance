@@ -13,18 +13,19 @@ namespace DAL.Entities
         public Int64 Id { get; set; }
 
         [Required]
-        [ForeignKey(nameof(InsuranceClient))]
-        public Int64 InsuranceClient { get; set; }
-
-        [Required]
-        public Date AppliedDate { get; set; }
+        public String AppliedDate { get; set; }
 
         [Required]
         public String ApplicationStatus { get; set; }
 
-        public ICollection<RiskDecision> RiskDecisions { get; set; }
+        [Required]
+        [ForeignKey(nameof(InsuranceClient))]
+        public Int64 InsuranceClientId { get; set; }
 
-        [Required] // One-To-One
-        public InsuranceForm InsuranceForm { get; set; }
+        [Required]
+        [ForeignKey(nameof(InsuranceForm))]
+        public Int64 InsuranceFormId { get; set; }
+
+        public ICollection<RiskDecision> RiskDecisions { get; set; }
     }
 }

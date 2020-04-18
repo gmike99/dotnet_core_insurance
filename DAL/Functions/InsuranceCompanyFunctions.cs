@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAL.Interfaces;
 
 namespace DAL.Functions
 {
-    class InsuranceCompanyFunctions
+    public class InsuranceCompanyFunctions
     {
     }
 }

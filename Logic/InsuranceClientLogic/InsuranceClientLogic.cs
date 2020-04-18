@@ -14,22 +14,23 @@ namespace Logic.InsuranceClientLogic
 
         public async Task<Boolean> CreateNewInsuranceClient(string fullName, string email)
         {
-            try
-            {
-                var result = await _insuranceClient.AddInsuranceClient(fullName, email);
-                if (result.Id > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception error)
-            {
-                return false;
-            }
+            return true;
+            //try
+            //{
+            //    var result = await _insuranceClient.AddInsuranceClient(fullName, email);
+            //    if (result.Id > 0)
+            //    {
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    return false;
+            //}
         }
 
         public async Task<List<InsuranceClient>> GetAllInsuranceClients()

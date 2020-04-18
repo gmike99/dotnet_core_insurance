@@ -17,7 +17,7 @@ namespace DAL.Entities
         public String Email { get; set; }
 
         [Required]
-        public int Age { get; set; }
+        public Int64 Age { get; set; }
 
         [Required]
         public String MaritalStatus { get; set; }

@@ -16,10 +16,10 @@ namespace DAL.Entities
 
         [Required]
         [ForeignKey(nameof(InsuranceCompany))]
-        public Int64 InsuranceCompany { get; set; }
+        public Int64 InsuranceCompanyId { get; set; }
 
         [Required]
         [ForeignKey(nameof(InsuranceClient))]
-        public Int64 InsuranceClient { get; set; }
+        public Int64 InsuranceClientId { get; set; }
     }
 }

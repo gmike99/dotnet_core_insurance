@@ -11,12 +11,26 @@ namespace DAL.Functions
 {
     public class InsuranceClientFunctions : IInsuranceClient
     {
-        public async Task<InsuranceClient> AddInsuranceClient(string fullName, string email)
+        public async Task<InsuranceClient> AddInsuranceClient(
+            string fullName,
+            string email,
+            int age,
+            string maritalStatus,
+            string nationality,
+            string residency,
+            string citizenship,
+            string address)
         {
             InsuranceClient insuranceClient = new InsuranceClient
             {
                 FullName = fullName,
-                Email = email
+                Email = email,
+                Age = age,
+                MaritalStatus = maritalStatus,
+                Nationality =nationality,
+                Residency = residency,
+                Citizenship = citizenship,
+                Address = address
             };
             using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
             {

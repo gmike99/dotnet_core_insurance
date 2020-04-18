@@ -15,10 +15,10 @@ namespace DAL.Entities
         public String DestinationState { get; set; }
 
         [Required]
-        public Date PlannedArrivalDate { get; set; }
+        public String PlannedArrivalDate { get; set; }
 
         [Required]
-        public Date PlannedDepartureDate { get; set; }
+        public String PlannedDepartureDate { get; set; }
 
         [Required]
         public Int64 DaysInCountry { get; set; }
@@ -26,7 +26,6 @@ namespace DAL.Entities
         [Required]
         public String InsurancePlan { get; set; }
 
-        [Required] // One-To-One
-        public Application Application { get; set; }
+        public ICollection<Application> Applications { get; set; }
     }
 }

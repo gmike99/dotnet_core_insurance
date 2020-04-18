@@ -23,7 +23,8 @@ namespace DAL.Entities
         [Required]
         public Double EvaluatedInsuranceFee { get; set; }
 
+        [Required]
         [ForeignKey(nameof(Application))]
-        public Int64 Application { get; set; }
+        public Int64 ApplicationId { get; set; }
     }
 }

@@ -6,5 +6,6 @@ namespace DAL.Functions
 {
     public class ApplicationFunctions
     {
+
     }
 }

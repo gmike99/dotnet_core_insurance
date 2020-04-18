@@ -27,6 +27,11 @@ namespace DAL.DataContext
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) {}
 
+        public DbSet<Application> Applications { get; set; }
         public DbSet<InsuranceClient> InsuranceClients { get; set; }
+        public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
+        public DbSet<InsuranceContract> InsuranceContracts { get; set; }
+        public DbSet<InsuranceForm> InsuranceForms { get; set; }
+        public DbSet<RiskDecision> RiskDecisions { get; set; }
     }
 }

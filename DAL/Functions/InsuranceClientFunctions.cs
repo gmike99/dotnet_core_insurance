@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Functions
 {
-    public class InsuranceClientImpl : IInsuranceClient
+    public class InsuranceClientFunctions : IInsuranceClient
     {
         public async Task<InsuranceClient> AddInsuranceClient(string fullName, string email)
         {

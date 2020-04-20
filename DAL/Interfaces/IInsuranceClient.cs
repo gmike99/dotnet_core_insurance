@@ -1,5 +1,4 @@
 ﻿using DAL.Entities;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,6 +19,6 @@ namespace DAL.Interfaces
 
         Task<List<InsuranceClient>> GetAllInsuranceClients();
         
-        Task<Boolean> GenerateData();
+        List<InsuranceClient> GenerateData();
     }
 }

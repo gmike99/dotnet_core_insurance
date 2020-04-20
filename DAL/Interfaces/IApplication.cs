@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DAL.Entities;
 using System.Threading.Tasks;
 
@@ -16,6 +15,6 @@ namespace DAL.Interfaces
 
         Task<List<Application>> GetAllApplications();
 
-        Task<Boolean> GenerateData();
+        List<Application> GenerateData();
     }
 }

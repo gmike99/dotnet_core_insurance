@@ -39,16 +39,15 @@ namespace DAL.Functions
             return applications;
         }
 
-        public async Task<bool> GenerateData()
+        public List<Application> GenerateData()
         {
+            var objects = new List<Application>(GeneratedSamples);
             for (var i = 0; i < GeneratedSamples; ++i)
             {
-                var applicationStatus = GeneratorUtils.GetRandomString(12);
-                var appliedDate = GeneratorUtils.GetRandomString(12);
-                var _ = await AddApplication(i, appliedDate, applicationStatus, i);
+                objects.Add(GeneratorUtils.GenerateDataForClass<Application>());
             }
-            
-            return true;
+
+            return objects;
         }
     }
 }

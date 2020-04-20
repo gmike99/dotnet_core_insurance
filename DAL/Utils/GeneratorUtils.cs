@@ -5,8 +5,9 @@ namespace DAL.Utils
     public static class GeneratorUtils
     {
         private const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+        private const int DefaultStringLength = 12;
         
-        public static string GetRandomString(int length)
+        private static string GetRandomString(int length)
         {
             var random = new Random();
             var result = new char[length];
@@ -19,17 +20,26 @@ namespace DAL.Utils
         }
 
 
-        public static void GenerateDataForClass<TModelClass>()
+        public static TModelClass GenerateDataForClass<TModelClass>() where TModelClass : new()
         {
+            var model = new TModelClass();
             var properties = typeof(TModelClass).GetProperties();
 
+            var i = 0;
             foreach (var property in properties)
             {
-                if (property is int)
+                ++i;
+                if (property.PropertyType == typeof(Int64))
                 {
-                    Console.WriteLine("Property is int");
+                    property.SetValue(model, i);
+                }
+                else if (property.PropertyType == typeof(String))
+                {
+                    property.SetValue(model, GetRandomString(DefaultStringLength));
                 }
             }
+
+            return model;
         }
     }
 }

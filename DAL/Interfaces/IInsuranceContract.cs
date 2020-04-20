@@ -16,6 +16,6 @@ namespace DAL.Interfaces
 
         Task<List<InsuranceContract>> GetAllInsuranceContracts();
         
-        Task<Boolean> GenerateData();
+        List<InsuranceContract> GenerateData();
     }
 }

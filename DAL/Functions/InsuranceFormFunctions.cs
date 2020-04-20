@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.DataContext;
 using DAL.Interfaces;
+using DAL.Utils;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -12,12 +11,14 @@ namespace DAL.Functions
 {
     public class InsuranceFormFunctions : IInsuranceForm
     {
+        private const int GeneratedSamples = 150;
+        
         public async Task<InsuranceForm> AddInsuranceForm(
             string destinationState,
             string plannedArrivalDate,
             string plannedDepartureDate,
             int daysInCountry,
-            string insurancePlan)
+            string plan)
         {
             InsuranceForm insuranceForm = new InsuranceForm
             {
@@ -25,29 +26,30 @@ namespace DAL.Functions
                 PlannedArrivalDate = plannedArrivalDate,
                 PlannedDepartureDate = plannedDepartureDate,
                 DaysInCountry = daysInCountry,
-                InsurancePlan = insurancePlan
+                InsurancePlan = plan
             };
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                await context.InsuranceForms.AddAsync(insuranceForm);
-                await context.SaveChangesAsync();
-            };
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            await context.InsuranceForms.AddAsync(insuranceForm);
+            await context.SaveChangesAsync();
             return insuranceForm;
         }
 
         public async Task<List<InsuranceForm>> GetAllInsuranceForms()
         {
-            List<InsuranceForm> insuranceForms = new List<InsuranceForm>();
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                insuranceForms = await context.InsuranceForms.ToListAsync();
-            }
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            var insuranceForms = await context.InsuranceForms.ToListAsync();
             return insuranceForms;
         }
 
-        public Task<bool> GenerateData()
+        public List<InsuranceForm> GenerateData()
         {
-            throw new NotImplementedException();
+            var objects = new List<InsuranceForm>(GeneratedSamples);
+            for (var i = 0; i < GeneratedSamples; ++i)
+            {
+                objects.Add(GeneratorUtils.GenerateDataForClass<InsuranceForm>());
+            }
+
+            return objects;
         }
     }
 }

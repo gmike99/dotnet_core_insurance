@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
 
@@ -18,6 +17,6 @@ namespace DAL.Interfaces
 
         Task<List<RiskDecision>> GetAllRiskDecisions();
         
-        Task<Boolean> GenerateData();
+        List<RiskDecision> GenerateData();
     }
 }

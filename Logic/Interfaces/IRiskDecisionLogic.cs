@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 
@@ -13,7 +12,7 @@ namespace Logic.Interfaces
             double evaluatedRiskDamage,
             double evaluatedDamageChance,
             double evaluatedInsuranceFee,
-            int applicatinoId
+            int applicationId
         );
 
         Task<List<RiskDecision>> GetAllRiskDecisions();

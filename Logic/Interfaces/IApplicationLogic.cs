@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 
@@ -9,10 +8,10 @@ namespace Logic.Interfaces
     public interface IApplicationLogic
     {
         Task<Boolean> AddApplication(
-            int insuranceClientId,
+            int clientId,
             string appliedDate,
             string applicationStatus,
-            int insuranceFormID
+            int formId
         );
 
         Task<List<Application>> GetAllApplications();

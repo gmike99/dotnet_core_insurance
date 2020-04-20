@@ -13,12 +13,12 @@ namespace Logic.Functions
         private readonly IRiskDecision _riskDecision;
 
         public async Task<Boolean> AddRiskDecision(string decisionDescription, double evaluatedRiskDamage, double evaluatedDamageChance,
-                                                   double evaluatedInsuranceFee, int applicatinoId)
+                                                   double evaluatedInsuranceFee, int applicationId)
         {
             try
             {
                 var result = await _riskDecision.AddRiskDecision(decisionDescription, evaluatedRiskDamage, evaluatedDamageChance,
-                                                                 evaluatedInsuranceFee, applicatinoId);
+                                                                 evaluatedInsuranceFee, applicationId);
                 if (result.Id > 0)
                 {
                     return true;

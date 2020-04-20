@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.DataContext;
 using DAL.Interfaces;
+using DAL.Utils;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -12,6 +11,8 @@ namespace DAL.Functions
 {
     public class RiskDecisionFunctions : IRiskDecision
     {
+        private const int GeneratedSamples = 150;
+        
         public async Task<RiskDecision> AddRiskDecision(
             string decisionDescription,
             double evaluatedRiskDamage,
@@ -27,27 +28,29 @@ namespace DAL.Functions
                 EvaluatedInsuranceFee = evaluatedInsuranceFee,
                 ApplicationId = applicationId
             };
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                await context.RiskDecisions.AddAsync(riskDecision);
-                await context.SaveChangesAsync();
-            };
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            await context.RiskDecisions.AddAsync(riskDecision);
+            await context.SaveChangesAsync();
+            
             return riskDecision;
         }
 
         public async Task<List<RiskDecision>> GetAllRiskDecisions()
         {
-            List<RiskDecision> riskDecisions = new List<RiskDecision>();
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                riskDecisions = await context.RiskDecisions.ToListAsync();
-            }
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            var riskDecisions = await context.RiskDecisions.ToListAsync();
             return riskDecisions;
         }
 
-        public Task<bool> GenerateData()
+        public List<RiskDecision> GenerateData()
         {
-            throw new NotImplementedException();
+            var objects = new List<RiskDecision>(GeneratedSamples);
+            for (var i = 0; i < GeneratedSamples; ++i)
+            {
+                objects.Add(GeneratorUtils.GenerateDataForClass<RiskDecision>());
+            }
+
+            return objects;
         }
     }
 }

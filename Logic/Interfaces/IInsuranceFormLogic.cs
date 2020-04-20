@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 
@@ -13,7 +12,7 @@ namespace Logic.Interfaces
             string plannedArrivalDate,
             string plannedDepartureDate,
             int daysInCountry,
-            string insurancePlan
+            string plan
         );
 
         Task<List<InsuranceForm>> GetAllInsuranceForms();

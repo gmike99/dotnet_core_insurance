@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 
@@ -10,8 +9,8 @@ namespace Logic.Interfaces
     {
         Task<Boolean> AddInsuranceContract(
             string documentScanUrl,
-            int insuranceCompanyId,
-            int insuranceClientId
+            int companyId,
+            int clientId
         );
 
         Task<List<InsuranceContract>> GetAllInsuranceContracts();

@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.DataContext;
 using DAL.Interfaces;
+using DAL.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Functions
 {
     public class InsuranceClientFunctions : IInsuranceClient
     {
+        private const int GeneratedSamples = 150;
+        
         public async Task<InsuranceClient> AddInsuranceClient(
             string fullName,
             string email,
@@ -44,9 +46,15 @@ namespace DAL.Functions
             return insuranceClients;
         }
 
-        public Task<bool> GenerateData()
+        public List<InsuranceClient> GenerateData()
         {
-            throw new NotImplementedException();
+            var objects = new List<InsuranceClient>(GeneratedSamples);
+            for (var i = 0; i < GeneratedSamples; ++i)
+            {
+                objects.Add(GeneratorUtils.GenerateDataForClass<InsuranceClient>());
+            }
+
+            return objects;
         }
     }
 }

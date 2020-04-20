@@ -44,5 +44,10 @@ namespace DAL.Functions
             }
             return insuranceForms;
         }
+
+        public Task<bool> GenerateData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace DAL.Functions
             double evaluatedRiskDamage,
             double evaluatedDamageChance,
             double evaluatedInsuranceFee,
-            int applicatinoId)
+            int applicationId)
         {
             RiskDecision riskDecision = new RiskDecision
             {
@@ -25,7 +25,7 @@ namespace DAL.Functions
                 EvaluaetedRiskDamage = evaluatedRiskDamage,
                 EvaluatedDamageChance = evaluatedDamageChance,
                 EvaluatedInsuranceFee = evaluatedInsuranceFee,
-                ApplicationId = applicatinoId
+                ApplicationId = applicationId
             };
             using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
             {
@@ -43,6 +43,11 @@ namespace DAL.Functions
                 riskDecisions = await context.RiskDecisions.ToListAsync();
             }
             return riskDecisions;
+        }
+
+        public Task<bool> GenerateData()
+        {
+            throw new NotImplementedException();
         }
     }
 }

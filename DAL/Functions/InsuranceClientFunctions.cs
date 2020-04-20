@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
 using DAL.DataContext;
@@ -32,22 +31,22 @@ namespace DAL.Functions
                 Citizenship = citizenship,
                 Address = address
             };
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                await context.InsuranceClients.AddAsync(insuranceClient);
-                await context.SaveChangesAsync();
-            };
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            await context.InsuranceClients.AddAsync(insuranceClient);
+            await context.SaveChangesAsync();
             return insuranceClient;
         }
 
         public async Task<List<InsuranceClient>> GetAllInsuranceClients()
         {
-            List<InsuranceClient> insuranceClients = new List<InsuranceClient>();
-            using (var context = new DatabaseContext(DatabaseContext.Ops.DbOptions))
-            {
-                insuranceClients = await context.InsuranceClients.ToListAsync();
-            }
+            await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
+            var insuranceClients = await context.InsuranceClients.ToListAsync();
             return insuranceClients;
         }
-}
+
+        public Task<bool> GenerateData()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

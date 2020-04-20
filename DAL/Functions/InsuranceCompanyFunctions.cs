@@ -38,5 +38,10 @@ namespace DAL.Functions
             }
             return insuranceCompanies;
         }
+
+        public Task<bool> GenerateData()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

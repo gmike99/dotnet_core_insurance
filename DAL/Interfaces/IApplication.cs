@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using DAL.Entities;
 using System.Threading.Tasks;
 
@@ -9,12 +8,14 @@ namespace DAL.Interfaces
     public interface IApplication
     {
         Task<Application> AddApplication(
-            int insuranceClientId,
+            int clientId,
             string appliedDate,
             string applicationStatus,
-            int insuranceFormID
+            int formId
         );
 
         Task<List<Application>> GetAllApplications();
+
+        Task<Boolean> GenerateData();
     }
 }

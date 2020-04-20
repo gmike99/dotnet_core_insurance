@@ -39,7 +39,7 @@ namespace DAL.Functions
             return applications;
         }
 
-        public List<Application> GenerateData()
+        public static List<Application> GenerateData()
         {
             var objects = new List<Application>(GeneratedSamples);
             for (var i = 0; i < GeneratedSamples; ++i)

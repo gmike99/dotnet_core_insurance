@@ -16,7 +16,7 @@ namespace DAL.Utils
                 result[i] = Chars[random.Next(Chars.Length)];
             }
 
-            return result.ToString();
+            return new string(result);
         }
 
 
@@ -25,17 +25,16 @@ namespace DAL.Utils
             var model = new TModelClass();
             var properties = typeof(TModelClass).GetProperties();
 
-            var i = 0;
             foreach (var property in properties)
             {
-                ++i;
                 if (property.PropertyType == typeof(Int64))
                 {
-                    property.SetValue(model, i);
+                    property.SetValue(model, 0, null);
                 }
                 else if (property.PropertyType == typeof(String))
                 {
-                    property.SetValue(model, GetRandomString(DefaultStringLength));
+                    var randomString = GetRandomString(DefaultStringLength);
+                    property.SetValue(model, randomString, null);
                 }
             }
 

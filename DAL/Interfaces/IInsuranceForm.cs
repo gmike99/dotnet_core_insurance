@@ -16,7 +16,5 @@ namespace DAL.Interfaces
         );
 
         Task<List<InsuranceForm>> GetAllInsuranceForms();
-        
-        List<InsuranceForm> GenerateData();
     }
 }

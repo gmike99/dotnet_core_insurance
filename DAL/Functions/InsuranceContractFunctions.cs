@@ -34,7 +34,7 @@ namespace DAL.Functions
             return insuranceContracts;
         }
 
-        public List<InsuranceContract> GenerateData()
+        public static List<InsuranceContract> GenerateData()
         {
             var objects = new List<InsuranceContract>(GeneratedSamples);
             for (var i = 0; i < GeneratedSamples; ++i)

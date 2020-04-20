@@ -16,7 +16,5 @@ namespace DAL.Interfaces
         );
 
         Task<List<RiskDecision>> GetAllRiskDecisions();
-        
-        List<RiskDecision> GenerateData();
     }
 }

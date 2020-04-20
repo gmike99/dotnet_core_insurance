@@ -14,7 +14,5 @@ namespace DAL.Interfaces
         );
 
         Task<List<Application>> GetAllApplications();
-
-        List<Application> GenerateData();
     }
 }

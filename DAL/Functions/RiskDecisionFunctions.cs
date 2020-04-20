@@ -42,7 +42,7 @@ namespace DAL.Functions
             return riskDecisions;
         }
 
-        public List<RiskDecision> GenerateData()
+        public static List<RiskDecision> GenerateData()
         {
             var objects = new List<RiskDecision>(GeneratedSamples);
             for (var i = 0; i < GeneratedSamples; ++i)

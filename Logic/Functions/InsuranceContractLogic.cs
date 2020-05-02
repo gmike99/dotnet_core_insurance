@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DAL.Entities;
 using Logic.Interfaces;
 using DAL.Interfaces;
+using DAL.Functions;
 
 namespace Logic.Functions
 {
@@ -11,19 +12,17 @@ namespace Logic.Functions
     {
         private readonly IInsuranceContract _insuranceContract;
 
+        public InsuranceContractLogic()
+        {
+            _insuranceContract = new InsuranceContractFunctions();
+        }
+
         public async Task<Boolean> AddInsuranceContract(string documentScanUrl, int insuranceCompanyId, int insuranceClientId)
         {
             try
             {
                 var result = await _insuranceContract.AddInsuranceContract(documentScanUrl, insuranceCompanyId, insuranceClientId);
-                if (result.Id > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return result.Id > 0;
             }
             catch (Exception)
             {
@@ -33,7 +32,7 @@ namespace Logic.Functions
 
         public async Task<List<InsuranceContract>> GetAllInsuranceContracts()
         {
-            List<InsuranceContract> insuranceContracts = await _insuranceContract.GetAllInsuranceContracts();
+            var insuranceContracts = await _insuranceContract.GetAllInsuranceContracts();
             return insuranceContracts;
         }
     }

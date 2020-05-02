@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
+using DAL.Functions;
 using Logic.Interfaces;
 using DAL.Interfaces;
 
@@ -11,20 +12,18 @@ namespace Logic.Functions
     {
         private readonly IInsuranceForm _insuranceForm;
 
+        public InsuranceFormLogic()
+        {
+            _insuranceForm = new InsuranceFormFunctions();
+        }
+
         public async Task<Boolean> AddInsuranceForm(string destinationState, string plannedArrivalDate,
                                                     string plannedDepartureDate, int daysInCountry, string insurancePlan)
         {
             try
             {
                 var result = await _insuranceForm.AddInsuranceForm(destinationState, plannedArrivalDate, plannedDepartureDate, daysInCountry, insurancePlan);
-                if (result.Id > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return result.Id > 0;
             }
             catch (Exception)
             {

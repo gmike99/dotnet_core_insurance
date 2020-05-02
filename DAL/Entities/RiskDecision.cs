@@ -9,6 +9,7 @@ namespace DAL.Entities
     public class RiskDecision
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int64 Id { get; set; }
 
         [Required]

@@ -19,7 +19,6 @@ namespace Logic.Utils
             objects.AddRange(InsuranceContractFunctions.GenerateData());
             objects.AddRange(InsuranceFormFunctions.GenerateData());
             objects.AddRange(RiskDecisionFunctions.GenerateData());
-            
 
             using var writer = new StreamWriter(filepath);
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);

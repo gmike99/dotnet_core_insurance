@@ -6,7 +6,7 @@ namespace DAL.Utils
     {
         private const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
         private const int DefaultStringLength = 12;
-        
+
         private static string GetRandomString(int length)
         {
             var random = new Random();
@@ -29,7 +29,7 @@ namespace DAL.Utils
             {
                 if (property.PropertyType == typeof(Int64))
                 {
-                    property.SetValue(model, 0, null);
+                    property.SetValue(model, 1, null);
                 }
                 else if (property.PropertyType == typeof(String))
                 {

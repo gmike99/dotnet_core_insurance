@@ -3,14 +3,19 @@ using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DAL.Functions;
 using Logic.Interfaces;
 
 namespace Logic.Functions
 {
     public class InsuranceClientLogic : IInsuranceClientLogic
     {
-        // Injecting a DAL dependency into Logic class
         private readonly IInsuranceClient _insuranceClient;
+
+        public InsuranceClientLogic()
+        {
+            _insuranceClient = new InsuranceClientFunctions();
+        }
 
         public async Task<Boolean> AddInsuranceClient(
             string fullName,
@@ -25,14 +30,7 @@ namespace Logic.Functions
             try
             {
                 var result = await _insuranceClient.AddInsuranceClient(fullName, email, age, maritalStatus, nationality, citizenship, residency, address);
-                if (result.Id > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return result.Id > 0;
             }
             catch (Exception)
             {

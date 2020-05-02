@@ -8,6 +8,7 @@ namespace DAL.Entities
     public class Application
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Int64 Id { get; set; }
 
         [Required]

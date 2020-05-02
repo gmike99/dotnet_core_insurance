@@ -12,7 +12,7 @@ namespace DAL.Functions
     public class InsuranceFormFunctions : IInsuranceForm
     {
         private const int GeneratedSamples = 150;
-        
+
         public async Task<InsuranceForm> AddInsuranceForm(
             string destinationState,
             string plannedArrivalDate,

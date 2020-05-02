@@ -11,7 +11,7 @@ namespace DAL.Functions
     public class InsuranceCompanyFunctions : IInsuranceCompany
     {
         private const int GeneratedSamples = 150;
-        
+
         public async Task<InsuranceCompany> AddInsuranceCompany(string name, string state, int numEmployees, string specialty)
         {
             InsuranceCompany insuranceCompany = new InsuranceCompany
@@ -24,7 +24,7 @@ namespace DAL.Functions
             await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
             await context.InsuranceCompanies.AddAsync(insuranceCompany);
             await context.SaveChangesAsync();
-            
+
             return insuranceCompany;
         }
 

@@ -26,6 +26,7 @@ namespace DAL.Functions
                 AppliedDate = appliedDate,
                 ApplicationStatus = applicationStatus
             };
+
             await using var context = new DatabaseContext(DatabaseContext.Ops.DbOptions);
             await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();

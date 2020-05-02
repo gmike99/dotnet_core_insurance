@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entities;
+using DAL.Functions;
 using Logic.Interfaces;
 using DAL.Interfaces;
 
@@ -12,6 +13,11 @@ namespace Logic.Functions
     {
         private readonly IRiskDecision _riskDecision;
 
+        public RiskDecisionLogic()
+        {
+            _riskDecision = new RiskDecisionFunctions();
+        }
+
         public async Task<Boolean> AddRiskDecision(string decisionDescription, double evaluatedRiskDamage, double evaluatedDamageChance,
                                                    double evaluatedInsuranceFee, int applicationId)
         {
@@ -19,14 +25,7 @@ namespace Logic.Functions
             {
                 var result = await _riskDecision.AddRiskDecision(decisionDescription, evaluatedRiskDamage, evaluatedDamageChance,
                                                                  evaluatedInsuranceFee, applicationId);
-                if (result.Id > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return result.Id > 0;
             }
             catch (Exception)
             {

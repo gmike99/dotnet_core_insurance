@@ -11,7 +11,7 @@ namespace DAL.Functions
     public class InsuranceClientFunctions : IInsuranceClient
     {
         private const int GeneratedSamples = 150;
-        
+
         public async Task<InsuranceClient> AddInsuranceClient(
             string fullName,
             string email,

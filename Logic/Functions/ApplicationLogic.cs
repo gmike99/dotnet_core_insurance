@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DAL.Entities;
+using DAL.Functions;
 using Logic.Interfaces;
 using DAL.Interfaces;
 
@@ -10,6 +11,11 @@ namespace Logic.Functions
     public class ApplicationLogic : IApplicationLogic
     {
         private readonly IApplication _application;
+
+        public ApplicationLogic()
+        {
+            _application = new ApplicationFunctions();
+        }
 
         public async Task<Boolean> AddApplication(int insuranceClientId, string appliedDate, string applicationStatus, int insuranceFormID)
         {

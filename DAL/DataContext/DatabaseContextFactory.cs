@@ -7,7 +7,7 @@ namespace DAL.DataContext
     {
         public DatabaseContext CreateDbContext(string[] args)
         {
-            AppConfiguration appConfig = new AppConfiguration();
+            var appConfig = new AppConfiguration();
             var opsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
             opsBuilder.UseSqlServer(appConfig.SqlConnectionString);
             return new DatabaseContext(opsBuilder.Options);
